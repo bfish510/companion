@@ -171,7 +171,20 @@ export const ButtonsGridPanel = memo(function ButtonsPage({
 	const holderSize = useResizeObserver({ ref: setSizeRef })
 	const useCompactButtons = (holderSize.width ?? 0) < 680 // Cutoff for what of the header row fit in the large mode
 
-	const [gridZoom, setGridZoom] = useState(100)
+	const [gridZoom, setGridZoom] = useState(() => {
+		// load the cached value, or start with default
+		const storedZoom = Number(window.localStorage.getItem(`grid:zoom-scale`))
+		return storedZoom && !isNaN(storedZoom) ? storedZoom : 100
+	})
+	const setAndStoreGridZoom = useCallback(
+		(value: number) => {
+			setGridZoom(value)
+
+			// Cache the value for future page loads
+			window.localStorage.setItem(`grid:zoom-scale`, value + '')
+		},
+		[setGridZoom]
+	)
 
 	return (
 		<KeyReceiver onKeyDown={onKeyDown} tabIndex={0} className="button-grid-panel">
@@ -202,7 +215,7 @@ export const ButtonsGridPanel = memo(function ButtonsPage({
 						</ButtonGridHeader>
 					</CCol>
 				</CRow>
-				<ButtonGridZoomSlider value={gridZoom} setValue={setGridZoom} />
+				<ButtonGridZoomSlider value={gridZoom} setValue={setAndStoreGridZoom} />
 			</div>
 			<div className="button-grid-panel-content">
 				{hasBeenInView && gridSize && (
