@@ -29,7 +29,7 @@ import React, {
 } from 'react'
 import { KeyReceiver, PagesContext, socketEmitPromise, SocketContext, UserConfigContext } from '../util.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileExport, faHome, faMagnifyingGlass, faMinus, faPencil, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faFileExport, faHome, faMinus, faPencil, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { ConfirmExportModal, ConfirmExportModalRef } from '../Components/ConfirmExportModal.js'
 import { ButtonInfiniteGrid, ButtonInfiniteGridRef, PrimaryButtonGridIcon } from './ButtonInfiniteGrid.js'
 import { useHasBeenRendered } from '../Hooks/useHasBeenRendered.js'
