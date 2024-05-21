@@ -207,37 +207,37 @@ export function ResolveExpression(node, getVariableValue, functions = {}) {
 								newValue = rightValue
 								break
 							case '*=':
-								newValue *= rightValue
+								newValue = Number(newValue) * Number(rightValue)
 								break
 							case '**=':
-								newValue **= rightValue
+								newValue = Number(newValue) ** Number(rightValue)
 								break
 							case '/=':
-								newValue /= rightValue
+								newValue = Number(newValue) / Number(rightValue)
 								break
 							case '%=':
-								newValue %= rightValue
+								newValue = Number(newValue) % Number(rightValue)
 								break
 							case '+=':
-								newValue += rightValue
+								newValue = Number(newValue) + Number(rightValue)
 								break
 							case '-=':
-								newValue -= rightValue
+								newValue = Number(newValue) - Number(rightValue)
 								break
 							case '<<=':
-								newValue <<= rightValue
+								newValue = Number(newValue) << Number(rightValue)
 								break
 							case '>>=':
-								newValue >>= rightValue
+								newValue = Number(newValue) >> Number(rightValue)
 								break
 							case '&=':
-								newValue &= rightValue
+								newValue = Number(newValue) & Number(rightValue)
 								break
 							case '^=':
-								newValue ^= rightValue
+								newValue = Number(newValue) ^ Number(rightValue)
 								break
 							case '|=':
-								newValue |= rightValue
+								newValue = Number(newValue) | Number(rightValue)
 								break
 							default:
 								throw new Error(`Unsupported assignment operator "${coreNode.operator}"`)
